@@ -11,6 +11,11 @@ class MainPageLocators:
     MAIN_TITLE = (By.XPATH, "//h1[text()='Соберите бургер']")  # Заголовок "Соберите бургер"
     ORDER_BASKET = (By.XPATH, "//span[@class='constructor-element__text' and text()='Перетяните булочку сюда (низ)']")  # Корзина заказа
 
+class LoginPageLocators:
+    EMAIL_INPUT = (By.XPATH, "//label[text()='Email']/../input") # Поле email
+    PASSWORD_INPUT = (By.XPATH, "//label[text()='Пароль']/../input")  # Поле пароль
+    LOGIN_BUTTON = (By.XPATH, "//button[text()='Войти']")  # Кнопка "Войти"
 
-class OrdersPageLocators:
+
+class OrderFeedLocators:
     ORDERS_LIST_TITLE = (By.XPATH, '//h1[text()="Лента заказов"]')  # Заголовок "Лента заказов"

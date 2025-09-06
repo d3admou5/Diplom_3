@@ -1,4 +1,4 @@
-from web_locators.locators import MainPageLocators, OrdersPageLocators
+from web_locators.locators import MainPageLocators, OrderFeedLocators
 from web_pages.base_page import BasePage
 
 class MainPage(BasePage):
@@ -11,7 +11,7 @@ class MainPage(BasePage):
     def click_orders_list_button(self):
         """Переход на страницу 'Лента заказов'"""
         self.move_to_element_and_click(MainPageLocators.ORDERS_LIST_BTN)
-        self.wait_until_element_visibility(OrdersPageLocators.ORDERS_LIST_TITLE)
+        self.wait_until_element_visibility(OrderFeedLocators.ORDERS_LIST_TITLE)
 
     def click_on_ingredient(self):
         """Кликаем на ингредиент"""

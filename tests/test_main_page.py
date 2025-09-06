@@ -7,7 +7,7 @@ class TestMainPage:
         """Проверка перехода на страницу Лента заказов"""
         pages.click_orders_list_button()
         current_url = pages.get_current_url()
-        assert current_url == Urls.ORDERS_FEED
+        assert current_url == Urls.ORDER_FEED
 
     def test_go_to_constructor(self, pages):
         """Проверка перехода в Конструктор"""
