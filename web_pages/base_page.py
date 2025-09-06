@@ -1,5 +1,6 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver import ActionChains
+from seletools.actions import drag_and_drop
 from selenium.webdriver.support import expected_conditions as EC
 
 class BasePage:
@@ -40,11 +41,11 @@ class BasePage:
         """Перетащить элемент"""
         draggable = self.driver.find_element(*locator_one)
         droppable = self.driver.find_element(*locator_two)
-        actions = ActionChains(self.driver)
-        actions.drag_and_drop(draggable, droppable).perform()
+        drag_and_drop(self.driver, draggable, droppable)
 
     def move_to_element_and_click(self, locator):
         """Переместиться до элемента и кликнуть"""
         element = self.driver.find_element(*locator)
         actions = ActionChains(self.driver)
         actions.move_to_element(element).click().perform()
+

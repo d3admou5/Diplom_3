@@ -25,7 +25,7 @@ class MainPage(BasePage):
 
     def click_cross_button(self):
         """Закрываем всплывающее окно крестиком"""
-        self.move_to_element_and_click(MainPageLocators.INGREDIENT_COUNT)
+        self.move_to_element_and_click(MainPageLocators.CLOSE_POPUP_BTN)
 
     def get_count_value(self):
         """Получаем значение счетчика ингредиента"""
