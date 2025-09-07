@@ -5,8 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class BasePage:
     def __init__(self, driver):
-        """Инициализация класса."""
         self.driver = driver
+        self.wait = WebDriverWait(driver, 15)
 
     def click_on_element(self, locator):
         """Кликаем по элементу"""
@@ -48,3 +48,12 @@ class BasePage:
         element = self.driver.find_element(*locator)
         actions = ActionChains(self.driver)
         actions.move_to_element(element).click().perform()
+
+    def find(self, locator):
+        """Ожидание элемента и возвращение его"""
+        return self.wait.until(EC.presence_of_element_located(locator))
+
+    def click(self, locator):
+        """Ожидание кликабельного элемента и клик"""
+        element = self.wait.until(EC.element_to_be_clickable(locator))
+        element.click()
