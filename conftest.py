@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from data.config_urls import Urls
-from web_pages.main_page import MainPage
+
 
 @pytest.fixture(params=['chrome', 'firefox'])
 def driver_do(request):
@@ -20,8 +20,3 @@ def driver_do(request):
     driver.get(Urls.MAIN_URL)
     yield driver
     driver.quit()
-
-@pytest.fixture
-def pages(driver_do):
-    """Инициализирует класс MainPage с selenium driver"""
-    return MainPage(driver_do)
