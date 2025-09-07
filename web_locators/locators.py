@@ -12,6 +12,7 @@ class MainPageLocators:
     ORDER_BASKET = (By.XPATH, "//span[contains(@class,'constructor-element__text') and contains(text(),'Перетяните булочку')]")  # Корзина заказа
     ORDER_BTN = (By.XPATH, '//button[text()="Оформить заказ"]')  # Кнопка "Оформить заказ"
     MODAL_CLOSE_BTN = (By.XPATH, "//button[contains(@class, 'Modal_modal__close')]")  # Кнопка закрытия модалки заказа
+    ORDER_NUMBER = (By.CLASS_NAME, "Modal_modal__title_shadow__3ikwq") # Номер заказа в окне
 
 
 class LoginPageLocators:
@@ -25,3 +26,4 @@ class OrderFeedLocators:
     OVERLAY = (By.XPATH, "//div[contains(@class, 'Modal_modal__overlay')]")  # Оверлей
     COUNTER_TODAY = (By.XPATH, "//p[text()='Выполнено за сегодня:']/following-sibling::p")  # Счетчик за сегодня
     COUNTER_TOTAL = (By.XPATH, "//p[text()='Выполнено за все время:']/following-sibling::p")  # Счетчик за все время
+    NUMBER_IN_PROGRESS = (By.CSS_SELECTOR, 'ul.OrderFeed_orderListReady__1YFem li') # Номер в разделе "В работе"
