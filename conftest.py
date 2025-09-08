@@ -26,5 +26,5 @@ def driver_do(request):
 @pytest.fixture
 def logged_in_page(driver_do):
     page = OrderFeedPage(driver_do)
-    page.login_user(UserData.user_email, UserData.user_password, Urls.LOGIN)
+    page.login_user(UserData.user_email, UserData.user_password)  # без Urls.LOGIN
     return page
