@@ -9,7 +9,7 @@ class OrderFeedPage(BasePage):
 
     @allure.step("Логин пользователя с email: {email}")
     def login_user(self, email, password):
-        self.driver.get(Urls.LOGIN)
+        self.open_page(Urls.LOGIN)
         self.find(LoginPageLocators.EMAIL_INPUT).send_keys(email)
         self.find(LoginPageLocators.PASSWORD_INPUT).send_keys(password)
         self.click(LoginPageLocators.LOGIN_BTN)
@@ -17,7 +17,7 @@ class OrderFeedPage(BasePage):
 
     @allure.step("Получение значения счётчика заказов 'Выполнено за сегодня'")
     def get_order_counter_today(self):
-        self.driver.get(Urls.ORDER_FEED)
+        self.open_page(Urls.ORDER_FEED)
         return int(self.get_text(OrderFeedLocators.COUNTER_TODAY))
 
     @allure.step("Оформление заказа")
@@ -31,12 +31,12 @@ class OrderFeedPage(BasePage):
 
     @allure.step("Получение значения счётчика заказов 'Выполнено за все время'")
     def get_order_counter_total(self):
-        self.driver.get(Urls.ORDER_FEED)
+        self.open_page(Urls.ORDER_FEED)
         return int(self.get_text(OrderFeedLocators.COUNTER_TOTAL))
 
     @allure.step("Открытие главной страницы конструктора")
     def open_main_page(self):
-        self.driver.get(Urls.MAIN_URL)
+        self.open_page(Urls.MAIN_URL)
 
     @allure.step("Перетаскивание ингредиента в заказ")
     def add_filling_to_order(self):
@@ -44,7 +44,7 @@ class OrderFeedPage(BasePage):
 
     @allure.step("Добавление булки в конструктор")
     def add_bun_to_constructor(self):
-        self.driver.get(Urls.MAIN_URL)
+        self.open_page(Urls.MAIN_URL)
         self.drag_and_drop_on_element(MainPageLocators.BUN_CARD, MainPageLocators.ORDER_BASKET)
 
     @allure.step("Получение номера созданного заказа")
@@ -58,7 +58,7 @@ class OrderFeedPage(BasePage):
 
     @allure.step("Переход в 'Ленту заказов'")
     def go_to_order_feed(self):
-        self.driver.get(Urls.ORDER_FEED)
+        self.open_page(Urls.ORDER_FEED)
         self.wait_until_element_visibility(OrderFeedLocators.ORDERS_LIST_TITLE)
 
     @allure.step("Получение списка номеров заказов 'В работе'")

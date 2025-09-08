@@ -46,3 +46,7 @@ class BasePage:
         """Навести курсор и кликнуть."""
         element = self.find(locator)
         ActionChains(self.driver).move_to_element(element).click().perform()
+
+    def open_page(self, url):
+        """Открыть url"""
+        self.driver.get(url)
