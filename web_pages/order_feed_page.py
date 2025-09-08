@@ -48,10 +48,13 @@ class OrderFeedPage(BasePage):
         self.drag_and_drop_on_element(MainPageLocators.BUN_CARD, MainPageLocators.ORDER_BASKET)
 
     def get_order_number(self):
-        """Получает номер созданного заказа."""
+        """Получает номер созданного заказа (6-значное число)."""
         self.wait_for_invisibility(OrderFeedLocators.OVERLAY)
-        time.sleep(5)
-        return self.wait.until(lambda d: (num := d.find_element(*MainPageLocators.ORDER_NUMBER).text.strip()) != "" and num)
+        return self.wait.until(
+            lambda d: (text := d.find_element(*MainPageLocators.ORDER_NUMBER).text.strip()).isdigit()
+                      and len(text) == 6
+                      and text
+        )
 
     def go_to_order_feed(self):
         """Переход в 'Ленту заказов'"""
