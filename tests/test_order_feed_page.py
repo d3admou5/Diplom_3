@@ -21,6 +21,7 @@ class TestCreateOrder:
         assert counter_after > counter_before
 
     def test_new_order_appears_in_work_list(self, logged_in_page):
+        """Проверка появления созданного заказа в разделе 'В работе'"""
         page = logged_in_page
         page.add_bun_to_constructor()
         page.place_order()
@@ -28,4 +29,3 @@ class TestCreateOrder:
         page.close_modal()
         page.go_to_order_feed()
         assert page.is_order_in_work(order_number)
-

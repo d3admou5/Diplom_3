@@ -10,13 +10,13 @@ def driver_do(request):
     if request.param == 'chrome':
         options = webdriver.ChromeOptions()
         options.add_argument("--incognito")
-        #options.add_argument("--headless")
+        options.add_argument("--headless")
         options.add_argument("--window-size=1920,1080")
         driver = webdriver.Chrome(options=options)
     elif request.param == 'firefox':
         options = webdriver.FirefoxOptions()
         options.add_argument("-private")
-        #options.add_argument("-headless")
+        options.add_argument("-headless")
         driver = webdriver.Firefox(options=options)
         driver.set_window_size(1920, 1080)
     driver.get(Urls.MAIN_URL)
@@ -26,5 +26,5 @@ def driver_do(request):
 @pytest.fixture
 def logged_in_page(driver_do):
     page = OrderFeedPage(driver_do)
-    page.login_user(UserData.user_email, UserData.user_password)  # без Urls.LOGIN
+    page.login_user(UserData.user_email, UserData.user_password)
     return page

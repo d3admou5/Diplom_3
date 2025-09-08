@@ -65,8 +65,6 @@ class OrderFeedPage(BasePage):
     def is_order_in_work(self, order_number):
         """Проверка, что заказ появился в списке 'В работе'"""
         self.wait.until(EC.presence_of_all_elements_located(OrderFeedLocators.NUMBER_IN_PROGRESS))
-
-        # теперь ждём, что нужный номер появился в списке
         return self.wait.until(
             lambda d: any(order_number in order for order in self.get_orders_in_progress())
         )
