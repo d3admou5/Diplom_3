@@ -1,4 +1,3 @@
-import time
 from selenium.webdriver.support import expected_conditions as EC
 from web_pages.base_page import BasePage
 from web_locators.locators import LoginPageLocators, MainPageLocators, OrderFeedLocators

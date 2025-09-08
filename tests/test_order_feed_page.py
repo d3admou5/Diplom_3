@@ -25,7 +25,7 @@ class TestCreateOrder:
         page = logged_in_page
         page.add_bun_to_constructor()
         page.place_order()
-        order_number = page.get_order_number()  # сохраняем номер сразу
+        order_number = page.get_order_number()
         page.close_modal()
         page.go_to_order_feed()
         assert page.is_order_in_work(order_number)
