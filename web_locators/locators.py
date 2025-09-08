@@ -13,6 +13,7 @@ class MainPageLocators:
     ORDER_BTN = (By.XPATH, '//button[text()="Оформить заказ"]')  # Кнопка "Оформить заказ"
     MODAL_CLOSE_BTN = (By.XPATH, "//button[contains(@class, 'Modal_modal__close')]")  # Кнопка закрытия модалки заказа
     ORDER_NUMBER = (By.CLASS_NAME, "Modal_modal__title_shadow__3ikwq") # Номер заказа в окне
+    FEED_HEADER = (By.XPATH, "//h1[text()='Лента заказов']")
 
 
 class LoginPageLocators:
