@@ -18,11 +18,6 @@ class OrderFeedPage(BasePage):
         self.driver.get(Urls.ORDER_FEED)
         return int(self.get_text(OrderFeedLocators.COUNTER_TODAY))
 
-    def add_bun_to_constructor(self):
-        """Добавление булки в конструктор"""
-        self.driver.get(Urls.MAIN_URL)
-        self.drag_and_drop_on_element(MainPageLocators.BUN_CARD, MainPageLocators.ORDER_BTN)
-
     def place_order(self):
         """Оформление заказа"""
         self.move_to_element_and_click(MainPageLocators.ORDER_BTN)
@@ -37,8 +32,15 @@ class OrderFeedPage(BasePage):
         self.driver.get(Urls.ORDER_FEED)
         return int(self.get_text(OrderFeedLocators.COUNTER_TOTAL))
 
-    def create_order(self):
-        """Создание заказа (булка → оформить → закрыть модалку)"""
-        self.add_bun_to_constructor()
-        self.place_order()
-        self.close_modal()
+    def open_main_page(self):
+        """Открытие главной страницы конструктора"""
+        self.driver.get(Urls.MAIN_URL)
+
+    def add_filling_to_order(self):
+        """Перетаскивание ингредиента в заказ"""
+        self.drag_and_drop_on_element(MainPageLocators.BUN_CARD, MainPageLocators.ORDER_BASKET)
+
+    def add_bun_to_constructor(self):
+        """Открыть главную и перетащить булку в конструктор"""
+        self.driver.get(Urls.MAIN_URL)
+        self.drag_and_drop_on_element(MainPageLocators.BUN_CARD, MainPageLocators.ORDER_BASKET)

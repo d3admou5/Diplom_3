@@ -4,7 +4,9 @@ class TestCreateOrder:
         """Проверка увеличения счётчика 'Выполнено за сегодня' после создания заказа"""
         page = logged_in_page
         counter_before = page.get_order_counter_today()
-        page.create_order()
+        page.add_bun_to_constructor()
+        page.place_order()
+        page.close_modal()
         counter_after = page.get_order_counter_today()
         assert counter_after > counter_before
 
@@ -12,6 +14,8 @@ class TestCreateOrder:
         """Проверка увеличения счётчика 'Выполнено за всё время' после создания заказа"""
         page = logged_in_page
         counter_before = page.get_order_counter_total()
-        page.create_order()
+        page.add_bun_to_constructor()
+        page.place_order()
+        page.close_modal()
         counter_after = page.get_order_counter_total()
         assert counter_after > counter_before
