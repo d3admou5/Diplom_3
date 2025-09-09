@@ -60,3 +60,14 @@ class BasePage:
     def open_page(self, url):
         """Открыть url"""
         self.driver.get(url)
+
+    @allure.step("Поиск всех элементов {locator}")
+    def find_all(self, locator):
+        """Найти все элементы (ждём появления в DOM)."""
+        return self.wait.until(EC.presence_of_all_elements_located(locator))
+
+    @allure.step("Получение текстов всех элементов {locator}")
+    def get_elements_text(self, locator, strip=True):
+        """Получить список текстов всех элементов."""
+        elements = self.find_all(locator)
+        return [el.text.strip() if strip else el.text for el in elements]

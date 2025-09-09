@@ -1,5 +1,4 @@
 import allure
-from selenium.webdriver.support import expected_conditions as EC
 from web_pages.base_page import BasePage
 from web_locators.locators import LoginPageLocators, MainPageLocators, OrderFeedLocators
 from data.config_urls import Urls
@@ -51,7 +50,7 @@ class OrderFeedPage(BasePage):
     def get_order_number(self):
         self.wait_for_invisibility(OrderFeedLocators.OVERLAY)
         return self.wait.until(
-            lambda d: (text := d.find_element(*MainPageLocators.ORDER_NUMBER).text.strip()).isdigit()
+            lambda d: (text := self.find(MainPageLocators.ORDER_NUMBER).text.strip()).isdigit()
                       and len(text) == 6
                       and text
         )
@@ -63,11 +62,11 @@ class OrderFeedPage(BasePage):
 
     @allure.step("Получение списка номеров заказов 'В работе'")
     def get_orders_in_progress(self):
-        return [order.text for order in self.driver.find_elements(*OrderFeedLocators.NUMBER_IN_PROGRESS)]
+        return self.get_elements_text(OrderFeedLocators.NUMBER_IN_PROGRESS)
 
     @allure.step("Проверка, что заказ {order_number} появился в разделе 'В работе'")
     def is_order_in_work(self, order_number):
-        self.wait.until(EC.presence_of_all_elements_located(OrderFeedLocators.NUMBER_IN_PROGRESS))
+        self.find_all(OrderFeedLocators.NUMBER_IN_PROGRESS)
         return self.wait.until(
             lambda d: any(order_number in order for order in self.get_orders_in_progress())
         )

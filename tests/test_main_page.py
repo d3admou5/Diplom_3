@@ -3,11 +3,10 @@ from data.config_urls import Urls
 from web_pages.main_page import MainPage
 
 
+@allure.suite("Главная страница")
 class TestMainPage:
 
-    @allure.feature("Переходы по страницам")
-    @allure.story("Проверка перехода на страницу Лента заказов")
-    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.title("Проверка перехода на страницу Лента заказов")
     def test_redirection_to_order_list(self, driver_do):
         pages = MainPage(driver_do)
         with allure.step("Нажатие кнопки 'Лента заказов'"):
@@ -16,8 +15,7 @@ class TestMainPage:
             current_url = pages.get_current_url()
             assert current_url == Urls.ORDER_FEED
 
-    @allure.feature("Переходы по страницам")
-    @allure.story("Проверка перехода в Конструктор")
+    @allure.title("Проверка перехода в Конструктор")
     def test_go_to_constructor(self, driver_do):
         pages = MainPage(driver_do)
         with allure.step("Переход на 'Лента заказов'"):
@@ -28,8 +26,7 @@ class TestMainPage:
             current_url = pages.get_current_url()
             assert current_url == Urls.MAIN_URL
 
-    @allure.feature("Интерфейс ингредиентов")
-    @allure.story("Проверка появления попапа с деталями ингредиента")
+    @allure.title("Проверка появления попапа с деталями ингредиента")
     def test_popup_of_ingredient(self, driver_do):
         pages = MainPage(driver_do)
         with allure.step("Клик по ингредиенту"):
@@ -38,8 +35,7 @@ class TestMainPage:
             actually_text = pages.check_show_window_with_details()
             assert actually_text == "Детали ингредиента"
 
-    @allure.feature("Интерфейс ингредиентов")
-    @allure.story("Проверка закрытия попапа с деталями ингредиента")
+    @allure.title("Проверка закрытия попапа с деталями ингредиента")
     def test_close_ingredient_details_window(self, driver_do):
         pages = MainPage(driver_do)
         with allure.step("Клик по ингредиенту"):
@@ -48,10 +44,9 @@ class TestMainPage:
             pages.click_cross_button()
             pages.invisibility_ingredient_details()
         with allure.step("Проверка, что окно закрылось"):
-            assert pages.check_displayed_ingredient_details() == False
+            assert pages.check_displayed_ingredient_details() is False
 
-    @allure.feature("Интерфейс ингредиентов")
-    @allure.story("Проверка счетчика ингредиента")
+    @allure.title("Проверка счетчика ингредиента")
     def test_ingredient_counter(self, driver_do):
         pages = MainPage(driver_do)
         with allure.step("Получение текущего значения счетчика"):

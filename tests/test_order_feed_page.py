@@ -1,9 +1,10 @@
 import allure
 
+
+@allure.suite("Создание заказов через UI")
 class TestCreateOrder:
 
-    @allure.feature("Счётчики заказов")
-    @allure.story("Проверка увеличения счётчика 'Выполнено за сегодня'")
+    @allure.title("Проверка увеличения счётчика 'Выполнено за сегодня'")
     def test_today_orders_counter(self, logged_in_page):
         page = logged_in_page
         with allure.step("Получаем текущее значение счётчика 'Выполнено за сегодня'"):
@@ -19,8 +20,7 @@ class TestCreateOrder:
         with allure.step("Проверяем, что счётчик увеличился"):
             assert counter_after > counter_before
 
-    @allure.feature("Счётчики заказов")
-    @allure.story("Проверка увеличения счётчика 'Выполнено за всё время'")
+    @allure.title("Проверка увеличения счётчика 'Выполнено за всё время'")
     def test_total_orders_counter(self, logged_in_page):
         page = logged_in_page
         with allure.step("Получаем текущее значение счётчика 'Выполнено за всё время'"):
@@ -36,8 +36,7 @@ class TestCreateOrder:
         with allure.step("Проверяем, что счётчик увеличился"):
             assert counter_after > counter_before
 
-    @allure.feature("Создание заказа")
-    @allure.story("Проверка появления созданного заказа в разделе 'В работе'")
+    @allure.title("Проверка появления созданного заказа в разделе 'В работе'")
     def test_new_order_appears_in_work_list(self, logged_in_page):
         page = logged_in_page
         with allure.step("Добавляем булку в конструктор"):
