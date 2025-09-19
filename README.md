@@ -1,5 +1,4 @@
 ## Проект - 3. Задание 3. UI автотесты
-
 ---
 #### В задании нужно протестировать [Stellar Burgers](https://stellarburgers.nomoreparties.site/).
 
